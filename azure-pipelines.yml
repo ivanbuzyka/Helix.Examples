@@ -10,7 +10,7 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
-  solution: '**/*.sln'
+  solution: '**/helix-basic-unicorn/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
