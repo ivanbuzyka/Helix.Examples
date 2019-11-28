@@ -20,6 +20,8 @@ steps:
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(solution)'
+    feedsToUse: 'config'
+    nugetConfigPath: '$(Build.Repository.LocalPath)/examples/helix-basic-unicorn/nuget.config'
 
 - task: VSBuild@1
   inputs:
