@@ -47,3 +47,4 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'sitecoredrop'
     publishLocation: 'Container'
+    FileCopyOptions: '*.zip'
