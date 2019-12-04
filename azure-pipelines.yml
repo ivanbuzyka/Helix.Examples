@@ -29,13 +29,13 @@ steps:
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
-    msbuildArgs: '/p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=true /p:publishUrl="$(build.artifactStagingDirectory)"'
+    msbuildArgs: '/p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=true /p:publishUrl="$(build.artifactStagingDirectory)/raw"'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
 - task: ArchiveFiles@2
   inputs:
-    rootFolderOrFile: '$(build.artifactStagingDirectory)'
+    rootFolderOrFile: '$(build.artifactStagingDirectory)/raw'
     includeRootFolder: false
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
