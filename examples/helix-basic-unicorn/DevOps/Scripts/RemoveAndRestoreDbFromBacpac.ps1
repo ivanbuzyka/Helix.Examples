@@ -16,7 +16,7 @@ $StorageKeyType = "StorageAccessKey"
 
 ### Remove existing DB
 Write-Host "Removing $SqlDbName.."
-Remove-AzSqlDatabase -ResourceGroupName $ResourceGroupName -ServerName $SqlServerName -DatabaseName $SqlDbName -Force
+Remove-AzSqlDatabase -ResourceGroupName $ResourceGroupName -ServerName $SqlServerName -DatabaseName $SqlDbName -Force -ErrorAction SilentlyContinue
 
 ### Import database from BACPAC, use the same name
 Write-Host "Re-creating $SqlDbName from $StorageUri BACPAC file"
