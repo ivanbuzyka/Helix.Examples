@@ -16,11 +16,11 @@ $StorageKeyType = "StorageAccessKey"
 
 ### Remove existing DB
 Write-Host "Removing $SqlDbName.."
-Remove-AzureRmSqlDatabase -ResourceGroupName $ResourceGroupName -ServerName $SqlServerName -DatabaseName $SqlDbName -Force
+Remove-AzSqlDatabase -ResourceGroupName $ResourceGroupName -ServerName $SqlServerName -DatabaseName $SqlDbName -Force
 
 ### Import database from BACPAC, use the same name
 Write-Host "Re-creating $SqlDbName from $StorageUri BACPAC file"
-$importRequest = New-AzureRmSqlDatabaseImport -ResourceGroupName $ResourceGroupName `
+$importRequest = New-AzSqlDatabaseImport -ResourceGroupName $ResourceGroupName `
                                           -ServerName $SqlServerName `
                                           -DatabaseName $SqlDbName `
                                           -StorageKeytype $StorageKeyType `
@@ -32,7 +32,7 @@ $importRequest = New-AzureRmSqlDatabaseImport -ResourceGroupName $ResourceGroupN
                                           -ServiceObjectiveName S0 `
                                           -DatabaseMaxSizeBytes "21474836480"
 
-While ((Get-AzureRmSqlDatabaseImportExportStatus -OperationStatusLink $importRequest.OperationStatusLink).Status -eq "InProgress")
+While ((Get-AzSqlDatabaseImportExportStatus -OperationStatusLink $importRequest.OperationStatusLink).Status -eq "InProgress")
 {
     Start-Sleep -Seconds 10   
 }
