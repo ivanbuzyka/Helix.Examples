@@ -5,6 +5,6 @@ param(	[string] $ResourceGroupName = "rgname",
     )
 	
 	Write-Host "Restoring $WebAppName from $StorageAccountSasUrl..."
-	Restore-AzureRmWebAppBackup -ResourceGroupName $ResourceGroupName -Name $WebAppName -StorageAccountUrl $StorageAccountSasUrl -BlobName $BackupName -Overwrite
+	Restore-AzWebAppBackup -ResourceGroupName $ResourceGroupName -Name $WebAppName -StorageAccountUrl $StorageAccountSasUrl -BlobName $BackupName -Overwrite
 	
 	Write-Host "Backup restoring scheduled..."
